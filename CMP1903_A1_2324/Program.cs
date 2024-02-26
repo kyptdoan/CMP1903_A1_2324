@@ -23,6 +23,11 @@ namespace CMP1903_A1_2324
             /// Create an object of Testing class.
             /// </summary>
             Testing testing = new Testing();
+            
+            /// <summary>
+            /// Create a reference to the object of Game created in <c>Testing</c> class.
+            /// </summary>
+            Game game = testing.GetGame();
 
             Console.WriteLine("Welcome to the Dice Rolling game.");
 
@@ -56,7 +61,7 @@ namespace CMP1903_A1_2324
                         // instead of create a new object of class Game
                         // to avoid Program and Testing runs 2 different class
                         // because a Game object has been created in class Testing.
-                        testing.game.RollThreeDice();
+                        game.RollThreeDice();
 
                         // Check if the dice values are valid.
                         testing.CheckRange();
@@ -65,7 +70,7 @@ namespace CMP1903_A1_2324
                         testing.CheckExpectation();
 
                         // Print out the sum of the 3 dice values.
-                        Console.WriteLine(testing.game.FindSum());
+                        Console.WriteLine(game.FindSum());
                     }
                     // option 2 is to quit the game.
                     else

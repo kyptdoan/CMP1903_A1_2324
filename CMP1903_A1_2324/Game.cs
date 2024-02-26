@@ -10,58 +10,52 @@ using System.Threading.Tasks;
 namespace CMP1903_A1_2324
 {
     /// <summary>
-    /// Class <o>Game</o> models a game with 3 dice (made from 3 objects of class <o>Die</o>).
+    /// Class <c>Game</c> models a game with 3 dice (made from 3 objects of class <o>Die</o>).
     /// with 2 methods to roll 3 dice and calculate the sum.
     /// </summary>
     internal class Game
-    {
+    {       
         /// <summary>
-        /// Value of the 1st die.
+        /// Represent the first die of the game.
         /// </summary>
-        private int _die1Value;
+        private readonly Die die1;
 
         /// <summary>
-        /// Value of the 2nd die.
+        /// Represent the second die of the game.
         /// </summary>
-        private int _die2Value;
+        private readonly Die die2;
 
         /// <summary>
-        /// Value of the 3rd die.
+        /// Represent the third die of the game.
         /// </summary>
-        private int _die3Value;
-        
-        /// <summary>
-        /// Object of the 1st die.
-        /// </summary>
-        private Die die1;
+        private readonly Die die3;
 
         /// <summary>
-        /// Object of the 2nd die.
+        /// Public method to get reference to the first die object.
         /// </summary>
-        private Die die2;
+        /// <returns>
+        /// The reference to the first die object.
+        /// </returns>
+        public Die GetDie1() { return die1; }
 
         /// <summary>
-        /// Object of the 3rd die.
+        /// Public method to get reference to the second die object.
         /// </summary>
-        private Die die3;
+        /// <returns>
+        /// The reference to the second die object.
+        /// </returns>
+        public Die GetDie2() { return die2; }
 
         /// <summary>
-        /// Property <o>Die1Value</o> to get the value of the 1st die.
+        /// Public method to get reference to the third object.
         /// </summary>
-        public int Die1Value {  get { return _die1Value; } }
+        /// <returns>
+        /// The reference to the third die object.
+        /// </returns>
+        public Die GetDie3() { return die3; }
 
         /// <summary>
-        /// Property <o>Die2Value</o> to get the value of the 2nd die.
-        /// </summary>
-        public int Die2Value {  get { return _die2Value; } }
-
-        /// <summary>
-        /// Property <o>Die3Value</o> to get the value of the 3rd die.
-        /// </summary>
-        public int Die3Value {  get { return _die3Value; } }
-
-        /// <summary>
-        /// This constructor initialises 3 dice objects for the game.
+        /// Constructor to create 3 instances of Die class and assign to 3 readonly fields.
         /// </summary>
         public Game()
         {
@@ -71,30 +65,28 @@ namespace CMP1903_A1_2324
         }
         
         /// <summary>
-        /// Method <o>RollThreeDice</o> rolls all 3 dice and report their values.
+        /// Method <c>RollThreeDice()</c> rolls all 3 dice and report their values.
         /// </summary>
         public void RollThreeDice()
-        {   
-            _die1Value = die1.Roll();
+        {
+            die1.Roll();
+            die2.Roll();
+            die3.Roll();
 
-            _die2Value = die2.Roll();
-
-            _die3Value = die3.Roll();
-
-            Console.WriteLine($"Die1 value is: {_die1Value}");
-            Console.WriteLine($"Die2 value is: {_die2Value}");
-            Console.WriteLine($"Die3 value is: {_die3Value}");
+            Console.WriteLine($"Die1 value is: {die1.CurrentValue}");
+            Console.WriteLine($"Die2 value is: {die2.CurrentValue}");
+            Console.WriteLine($"Die3 value is: {die3.CurrentValue}");
         }
 
         /// <summary>
-        /// Method <o>FindSum</o> calculates the sum of 3 dice values.
+        /// Method <c>FindSum()</c> calculates the sum of 3 dice values.
         /// </summary>
         /// <returns>
         /// An integer represents the sum of 3 dice values.
         /// </returns>
         public int FindSum()
         {
-            int sum = _die1Value + _die2Value + _die3Value;
+            int sum = die1.CurrentValue + die2.CurrentValue + die3.CurrentValue;
             return sum;
         }
     }

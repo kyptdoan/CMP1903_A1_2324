@@ -9,15 +9,22 @@ using System.Threading.Tasks;
 namespace CMP1903_A1_2324
 {
     /// <summary>
-    /// Class <o>Testing</o> provides methods to debug and check valid output for each die value and the sum.
+    /// Class <c>Testing()</c> provides methods to debug and check valid output for each die value and the sum.
     /// </summary>
     internal class Testing
     {
         /// <summary>
-        /// A public Game object creation to be used by both class <o>Testing</o> and class <o>Program</o>
-        /// allows class <o>Testing</o> to test the right game that class <o>Program</o> is running.
+        /// Creating a reference to an object of the <c>Game</c> class.
         /// </summary>
-        public Game game;
+        private Game game;
+
+        /// <summary>
+        /// Public method to get reference to the object.
+        /// </summary>
+        /// <returns>
+        /// The reference to the Game object.
+        /// </returns>
+        public Game GetGame() { return game; }
 
         /// <summary>
         /// A constructor to initialises a Game object for class <o>Testing</o>.
@@ -32,9 +39,9 @@ namespace CMP1903_A1_2324
         /// </summary>
         public void CheckRange()
         {
-            Debug.Assert(game.Die1Value >= 1 && game.Die1Value <= 6, "Invalid Die Value");
-            Debug.Assert(game.Die2Value >= 1 && game.Die2Value <= 6, "Invalid Die Value");
-            Debug.Assert(game.Die3Value >= 1 && game.Die3Value <= 6, "Invalid Die Value");
+            Debug.Assert(game.GetDie1().CurrentValue >= 1 && game.GetDie1().CurrentValue <= 6, "Invalid Die Value");
+            Debug.Assert(game.GetDie2().CurrentValue >= 1 && game.GetDie2().CurrentValue <= 6, "Invalid Die Value");
+            Debug.Assert(game.GetDie3().CurrentValue >= 1 && game.GetDie3().CurrentValue <= 6, "Invalid Die Value");
         }
 
         /// <summary>
