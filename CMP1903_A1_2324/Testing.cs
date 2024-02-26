@@ -35,7 +35,7 @@ namespace CMP1903_A1_2324
         }
 
         /// <summary>
-        /// Method <o>CheckRange</o> to check if the value of each die is valid.
+        /// Method <c>CheckRange()</c> to check if the value of each die is valid.
         /// </summary>
         public void CheckRange()
         {
@@ -45,7 +45,7 @@ namespace CMP1903_A1_2324
         }
 
         /// <summary>
-        /// Method <o>CheckExpectation</o> to check if the sum of 3 dice is valid.
+        /// Method <c>CheckExpectation()</c> to check if the sum of 3 dice is valid.
         /// </summary>
         public void CheckExpectation()
         {
