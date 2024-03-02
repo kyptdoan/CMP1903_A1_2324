@@ -13,7 +13,7 @@ namespace CMP1903_A1_2324
         /// <summary>
         /// Create a new object <c>rd</c> of Random class
         /// </summary>
-        private static readonly Random rd = new Random();
+        private static readonly Random _rd = new Random();
         private int _currentValue;
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace CMP1903_A1_2324
         /// </returns>
         public int Roll()
         {
-            _currentValue = rd.Next(1, 7);
+            _currentValue = _rd.Next(1, 7);
 
             return _currentValue;
         }

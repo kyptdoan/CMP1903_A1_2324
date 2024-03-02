@@ -18,6 +18,7 @@ namespace CMP1903_A1_2324
         static void Main(string[] args)
         {   
             int user_input;
+            int expectation;
 
             /// <summary>
             /// Create an object of Testing class.
@@ -27,20 +28,18 @@ namespace CMP1903_A1_2324
             /// <summary>
             /// Create a reference to the object of Game created in <c>Testing</c> class.
             /// </summary>
-            Game game = testing.GetGame();
+            Game game = testing.GetGame;
 
             Console.WriteLine("Welcome to the Dice Rolling game.");
-
-            /// <summary>
-            /// erroneous input handling and continuous roll execution.
-            /// </summary>
+            
+            // exceptions handling and continuous roll execution.
             while (true)
             {
                 Console.WriteLine("Choose a function:");
-                Console.WriteLine("1. Type '1' if you want to roll the dice.");
+                Console.WriteLine("1. Type '1' if you want to roll the dice and check if the sum is as your expectation.");
                 Console.WriteLine("2. Type '2' if you want to quit the game.");
 
-                // check if the user inputs an integer.
+                // check if the user inputs an integer to choose an option.
                 try
                 {
                     user_input = int.Parse(Console.ReadLine());
@@ -57,20 +56,49 @@ namespace CMP1903_A1_2324
                     // option 1 is to roll 3 dice and find their sum.
                     if (user_input == 1)
                     {
-                        // Access the method of class Game via class Testing
-                        // instead of create a new object of class Game
-                        // to avoid Program and Testing runs 2 different class
-                        // because a Game object has been created in class Testing.
-                        game.RollThreeDice();
+                        // validate user's input for expectation.
+                        while (true)
+                        {
+                            Console.WriteLine("Please type in your expectation for the sum. It must be between 3 and 18 (inclusive)");
 
-                        // Check if the dice values are valid.
-                        testing.CheckRange();
+                            // check if the user input an integer for expectation
+                            try
+                            {
+                                expectation = int.Parse(Console.ReadLine());
+                            }
+                            catch (FormatException)
+                            {
+                                Console.WriteLine("Please only input an integer from 3 to 18.");
+                                continue;
+                            }
+                            // check if user's expecation is in the valid range of the sum (3 to 18)
+                            if (expectation >= 3 && expectation <= 18)
+                            {
+                                // Access the method of class Game via class Testing
+                                // instead of create a new object of class Game
+                                // to avoid Program and Testing runs 2 different class
+                                // because a Game object has been created in class Testing.
+                                game.RollThreeDice();
 
-                        // Check if the sum of 3 dice values is valid.
-                        testing.CheckExpectation();
+                                // Check if the dice values are valid.
+                                testing.CheckRange();
 
-                        // Print out the sum of the 3 dice values.
-                        Console.WriteLine(game.FindSum());
+                                // Check if the sum of 3 dice values is valid.
+                                testing.CheckSum();
+
+                                // Print out the sum of the 3 dice values.
+                                Console.WriteLine(game.FindSum());
+
+                                // Check if the sum is as user's expectation.
+                                testing.CheckExpectation(expectation);
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Please only input an integer from 3 to 18.");
+                                continue;
+                            }
+                        }                 
                     }
                     // option 2 is to quit the game.
                     else

@@ -16,7 +16,7 @@ namespace CMP1903_A1_2324
         /// <summary>
         /// Creating a reference to an object of the <c>Game</c> class.
         /// </summary>
-        private Game game;
+        private Game _game;
 
         /// <summary>
         /// Public method to get reference to the object.
@@ -24,14 +24,17 @@ namespace CMP1903_A1_2324
         /// <returns>
         /// The reference to the Game object.
         /// </returns>
-        public Game GetGame() { return game; }
+        public Game GetGame
+        {
+            get { return _game; }
+        }
 
         /// <summary>
         /// A constructor to initialises a Game object for class <o>Testing</o>.
         /// </summary>
         public Testing()
         {
-            game = new Game();
+            _game = new Game();
         }
 
         /// <summary>
@@ -39,17 +42,29 @@ namespace CMP1903_A1_2324
         /// </summary>
         public void CheckRange()
         {
-            Debug.Assert(game.GetDie1().CurrentValue >= 1 && game.GetDie1().CurrentValue <= 6, "Invalid Die Value");
-            Debug.Assert(game.GetDie2().CurrentValue >= 1 && game.GetDie2().CurrentValue <= 6, "Invalid Die Value");
-            Debug.Assert(game.GetDie3().CurrentValue >= 1 && game.GetDie3().CurrentValue <= 6, "Invalid Die Value");
+            Debug.Assert(_game.GetDie1.CurrentValue >= 1 && _game.GetDie1.CurrentValue <= 6, "Die value cannot be smaller than 3 and greater than 18.");
+            Debug.Assert(_game.GetDie2.CurrentValue >= 1 && _game.GetDie2.CurrentValue <= 6, "Die value cannot be smaller than 3 and greater than 18.");
+            Debug.Assert(_game.GetDie3.CurrentValue >= 1 && _game.GetDie3.CurrentValue <= 6, "Die value cannot be smaller than 3 and greater than 18.");
         }
 
         /// <summary>
         /// Method <c>CheckExpectation()</c> to check if the sum of 3 dice is valid.
         /// </summary>
-        public void CheckExpectation()
+        public void CheckSum()
         {
-            Debug.Assert(game.FindSum() >= 3 && game.FindSum() <= 18, "Invalid Sum Value");
+            Debug.Assert(_game.FindSum() >= 3 && _game.FindSum() <= 18, "Invalid Sum Value");
+        }
+
+        public void CheckExpectation(int expectation)
+        {
+            if (_game.FindSum() == expectation)
+            {
+                Console.WriteLine("The sum is as you expected.");
+            }
+            else
+            {
+                Console.WriteLine("The sum is not as you expected.");
+            }
         }
     }
 }

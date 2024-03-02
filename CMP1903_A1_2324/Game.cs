@@ -18,17 +18,17 @@ namespace CMP1903_A1_2324
         /// <summary>
         /// Represent the first die of the game.
         /// </summary>
-        private readonly Die die1;
+        private readonly Die _die1;
 
         /// <summary>
         /// Represent the second die of the game.
         /// </summary>
-        private readonly Die die2;
+        private readonly Die _die2;
 
         /// <summary>
         /// Represent the third die of the game.
         /// </summary>
-        private readonly Die die3;
+        private readonly Die _die3;
 
         /// <summary>
         /// Public method to get reference to the first die object.
@@ -36,7 +36,10 @@ namespace CMP1903_A1_2324
         /// <returns>
         /// The reference to the first die object.
         /// </returns>
-        public Die GetDie1() { return die1; }
+        public Die GetDie1 
+        { 
+            get { return _die1; } 
+        }
 
         /// <summary>
         /// Public method to get reference to the second die object.
@@ -44,7 +47,10 @@ namespace CMP1903_A1_2324
         /// <returns>
         /// The reference to the second die object.
         /// </returns>
-        public Die GetDie2() { return die2; }
+        public Die GetDie2
+        {
+            get { return _die2; }
+        }
 
         /// <summary>
         /// Public method to get reference to the third object.
@@ -52,16 +58,19 @@ namespace CMP1903_A1_2324
         /// <returns>
         /// The reference to the third die object.
         /// </returns>
-        public Die GetDie3() { return die3; }
+        public Die GetDie3
+        {
+            get { return _die3; }
+        }
 
         /// <summary>
         /// Constructor to create 3 instances of Die class and assign to 3 readonly fields.
         /// </summary>
         public Game()
         {
-            die1 = new Die();
-            die2 = new Die();
-            die3 = new Die();
+            _die1 = new Die();
+            _die2 = new Die();
+            _die3 = new Die();
         }
         
         /// <summary>
@@ -69,13 +78,13 @@ namespace CMP1903_A1_2324
         /// </summary>
         public void RollThreeDice()
         {
-            die1.Roll();
-            die2.Roll();
-            die3.Roll();
+            _die1.Roll();
+            _die2.Roll();
+            _die3.Roll();
 
-            Console.WriteLine($"Die1 value is: {die1.CurrentValue}");
-            Console.WriteLine($"Die2 value is: {die2.CurrentValue}");
-            Console.WriteLine($"Die3 value is: {die3.CurrentValue}");
+            Console.WriteLine($"Die1 value is: {_die1.CurrentValue}");
+            Console.WriteLine($"Die2 value is: {_die2.CurrentValue}");
+            Console.WriteLine($"Die3 value is: {_die3.CurrentValue}");
         }
 
         /// <summary>
@@ -86,7 +95,7 @@ namespace CMP1903_A1_2324
         /// </returns>
         public int FindSum()
         {
-            int sum = die1.CurrentValue + die2.CurrentValue + die3.CurrentValue;
+            int sum = _die1.CurrentValue + _die2.CurrentValue + _die3.CurrentValue;
             return sum;
         }
     }
